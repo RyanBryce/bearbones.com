@@ -1,0 +1,26 @@
+/*.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }*/
+body{
+  display: flex;
+  height: 100%;
+  background-color: #f8f8f8;
+}
+.navbar{
+  margin: 0;
+}
+.navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  /*height: 70px;*/
+}
+.bear_offset_top  > p{
+  position: relative;
+  bottom: 15px;
+}
+
+.bear_offset_top  > img{
+  position: relative;
+  bottom: 20px;
+  border-radius: 5px;
+  height: 100px;
+  width: 100px;
+}
