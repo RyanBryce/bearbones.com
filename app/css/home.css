@@ -2,15 +2,24 @@
 body{
   display: flex;
   height: 100%;
-  background-color: #f8f8f8;
+  background-color: #D7C59C;
 }
 .navbar{
   margin: 0;
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: #6a6a6c;
   border-color: #e7e7e7;
   /*height: 70px;*/
+}
+.navbar-default .navbar-nav>li>a{
+  color: #D7C59C;
+}
+.navbar-default .navbar-brand{
+  color: #D7C59C;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #D7C59C;
 }
 .bear_offset_top  > p{
   position: relative;
@@ -23,4 +32,7 @@ body{
   border-radius: 5px;
   height: 100px;
   width: 100px;
+}
+.products_i_love{
+
 }

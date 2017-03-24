@@ -2,12 +2,12 @@
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-            <a class="navbar-brand" href="#">BearBonesDesigns</a>
+		          <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+		         </button>
+             <a class="navbar-brand" href="#">BearBonesDesigns</a>
         </div>
         <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
             <ul class="nav navbar-nav navbar-right">
@@ -22,21 +22,26 @@
   <div class="">
       <img src="../img/isbl_3360x840.24691875_qrt8d6xn.jpg" class="img-responsive" alt="Responsive image"><img src="" alt=""></img>
       <div class="bear_offset_top">
-          <img src="img/isla_180x180.23775976_83pwf17s.jpg" alt="bear bones" class="center-block">
-          <p style="text-align:center;">Durable jewelry for the adventurous & fearless</p>
+        <img src="img/isla_180x180.23775976_83pwf17s.jpg" alt="bear bones" class="center-block">
+        <p style="text-align:center;">Durable jewelry for the adventurous & fearless</p>
       </div>
       <!-- <img src="../img/isla_500x500.23775976_83pwf17s.jpg" class="img-responsive center-block" alt="Responsive image"> -->
   </div>
   <div style="height: 305px">
-      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-          <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-              <img ng-src="{{slide.image}}" style="margin:auto; width:100%; height:305px;">
-              <div class="carousel-caption">
-                  <!-- <h4>Slide {{slide.id}}</h4> -->
-                  <!-- <p>{{slide.text}}</p> -->
-              </div>
-          </div>
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+        <img ng-src="{{slide.image}}" style="margin:auto; width:100%; height:305px;">
+        <div class="carousel-caption">
+            <!-- <h4>Slide {{slide.id}}</h4> -->
+            <!-- <p>{{slide.text}}</p> -->
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="products_i_love">
+      Products I Love <em>Maybe You Will To</em>
+    </div>
   </div>
 </body>
 <footer>
