@@ -1,8 +1,9 @@
 angular.module('bearBones').controller('productsCtrl', function ($scope, bearService, $sce) {
 
+$scope.isNavCollapsed = true;
 
 bearService.getProducts().then((res) => {
-  console.log(res);
+  // console.log(res);
   if (res) {
     $scope.products = res
   }

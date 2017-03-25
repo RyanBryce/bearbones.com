@@ -11,7 +11,12 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngTouch'
 			url: '/products',
 			templateUrl: './views/products/products.html',
 			controller: 'productsCtrl'
-		});
+		})
+		.state('cart', {
+			url: '/cart',
+			templateUrl: './views/cart/cart.html',
+			controller: 'productsCtrl'
+		})
 
 		$urlRouterProvider.otherwise('/');
 });
