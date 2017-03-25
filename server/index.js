@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const massive = require('massive');
 const config = require('./config');
-// const sass = require('sass');
-// sass.render()
 let connectionString = "postgres://ryanbryce@localhost/bearbones";
 let massiveInstance = massive.connectSync({connectionString})
 
@@ -31,11 +29,11 @@ let ctrl = require('./controllers/productsCtrl')
 
 // app.get('/', (req, res) => {
 //   console.log('hi');
-//   res.send('hi fucker')
+//   res.send('hi')
 // })
-// app.get('/api/products', ctrl.getProducts)
-//
-// app.post('/api/product', ctrl.createProduct)
+app.get('/api/products', ctrl.getProducts)
+
+app.post('/api/product', ctrl.createProduct)
 
 let port = 3000
 app.listen(port, () => {

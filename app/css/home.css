@@ -2,7 +2,7 @@
 body{
   display: flex;
   height: 100%;
-  background-color: #D7C59C;
+  /*background-color: #D7C59C;*/
 }
 .navbar{
   margin: 0;

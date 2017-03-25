@@ -9,11 +9,16 @@ gulp.task('concat', function () {
   .pipe(babel({
     presets: ['es2015']
   }))
-  .pipe(gulp.dest('./dist'))
+  .pipe(gulp.dest('./app/dist'))
 });
 gulp.task('sass', function () {
   return gulp.src('./app/**/*.sass')
     .pipe(sass())
     .pipe(concat('styles.css'))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./app/dist'));
 });
+
+gulp.task('watch', function(){
+  gulp.watch('app/**/*.sass', ['sass']);
+  gulp.watch('./app/**/*.js', ['concat']);
+})

@@ -1,3 +1,13 @@
-<div class="">
-  sup
+<div ng-repeat="prod in products">
+  {{prod.name}}
+  <!-- <img src="{{trustedSrc(prod.imgurl1)}}" alt=""> -->
+  <img style="width:50px; height:50px;" src="{{prod.imgurl1}}" alt="">
+  <img style="width:50px; height:50px;" src="{{prod.imgurl2}}" alt="">
+  <img style="width:50px; height:50px;" src="{{prod.imgurl3}}" alt="">
+  <img style="width:50px; height:50px;" src="{{prod.imgurl4}}" alt="">
+  <img style="width:50px; height:50px;" src="{{prod.imgurl5}}" alt="">
+
 </div>
+<!-- <div ng-repeat="img in img1">
+  {{img1}}
+</div> -->
