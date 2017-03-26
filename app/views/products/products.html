@@ -1,45 +1,40 @@
-<header>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
-		          <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-		         </button>
-             <a class="navbar-brand" href="#">BearBonesDesigns</a>
-        </div>
-        <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a ui-sref="products">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a ui-sref="cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<ry-nav></ry-nav>
 <body>
   <div class="container">
 
       <div class="row">
         <div class="col-xs-7 col-md-8 col-sm-8 col-lg-8">
 
-
-
              <div class="panel panel-primary" ng-repeat="prod in products">
               <div class="panel-heading">
                   <h3 class="panel-title">{{prod.name}}</h3>
               </div>
-              <div class="panel-body">
-                    <div class="radio">
-                        <label><input type="radio" name="optradio11">Option 1</label>
-                    </div>
-                     <!-- <div class="radio">
-                        <label><input type="radio" name="optradio11">Option 1</label>
-                    </div>
-                    <div class="radio">
-                        <label><input type="radio" name="optradio11">Option 1</label>
-                    </div> -->
+              <div class="panel-body" >
+                <div class="panel-body" ng-show="!!prod.imgurl1">
+                  <img style="width:50px; height:50px;" src="{{prod.imgurl1}}" alt="">
+                </div>
+                <div ng-show="!!prod.imgurl2">
+                  <img style="width:50px; height:50px;" src="{{prod.imgurl2}}" alt="">
+                </div>
+                <div class="" ng-show="!!prod.imgurl3">
+                  <img style="width:50px; height:50px;" src="{{prod.imgurl3}}" alt="">
+                </div>
+                <div class="" ng-show="!!prod.imgurl4">
+                  <img style="width:50px; height:50px;" src="{{prod.imgurl4}}" alt="">
+                </div>
+                <div class="" ng-show="!!prod.imgurl5">
+                  <img style="width:50px; height:50px;" src="{{prod.imgurl5}}" alt="">
+                </div>
+
+                  <!-- <div class="radio">
+                      <label><input type="radio" name="optradio11">Option 1</label>
+                  </div> -->
+                   <!-- <div class="radio">
+                      <label><input type="radio" name="optradio11">Option 1</label>
+                  </div>
+                  <div class="radio">
+                      <label><input type="radio" name="optradio11">Option 1</label>
+                  </div> -->
               </div>
             </div>
 
