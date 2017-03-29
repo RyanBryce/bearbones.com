@@ -8,4 +8,14 @@ angular.module('bearBones')
 		total += $scope.userCart[i].total;
 		$scope.total = total.toFixed(2);
 	}
+
+  $scope.submitForm = function(isValid) {
+
+    // check to make sure the form is completely valid
+    if (isValid) {
+      alert('our form is amazing');
+    }
+
+  };
+
 })

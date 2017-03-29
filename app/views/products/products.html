@@ -10,25 +10,41 @@
                   <h3 class="panel-title">{{prod.name}}</h3>
               </div>
               <div class="panel-body" >
-                <div class="panel-body" ng-show="!!prod.imgurl1">
-                  <img style="width:50px; height:50px;" src="{{prod.imgurl1}}" alt="">
-                </div>
-                <div ng-show="!!prod.imgurl2">
-                  <img style="width:50px; height:50px;" src="{{prod.imgurl2}}" alt="">
-                </div>
-                <div class="" ng-show="!!prod.imgurl3">
-                  <img style="width:50px; height:50px;" src="{{prod.imgurl3}}" alt="">
-                </div>
-                <div class="" ng-show="!!prod.imgurl4">
-                  <img style="width:50px; height:50px;" src="{{prod.imgurl4}}" alt="">
-                </div>
-                <div class="" ng-show="!!prod.imgurl5">
-                  <img style="width:50px; height:50px;" src="{{prod.imgurl5}}" alt="">
-                </div>
-                <div class="">
-                  {{prod.price}}
-                </div>
-                <div class="btn btn-success" ng-click="sendToCart(prod.imgurl1, prod.name, prod.price, prod.productid)">Add to cart</div>
+                <div class="container">
+                  <div class="panel-body">
+                    <div class="">
+                      <img ng-src="{{selectedImage}}" alt="">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-1" ng-show="!!prod.imgurl1">
+                      <img style="width:50px; height:50px;" src="{{prod.imgurl1}}" alt="" ng-click="setSelectedImage(prod.imgurl1)">
+                    </div>
+                    <div class="col-xs-1" ng-show="!!prod.imgurl2">
+                      <img style="width:50px; height:50px;" src="{{prod.imgurl2}}" alt="" ng-click="setSelectedImage(prod.imgurl2)">
+                    </div>
+                    <div class="col-xs-1" ng-show="!!prod.imgurl3">
+                      <img style="width:50px; height:50px;" src="{{prod.imgurl3}}" alt="" ng-click="setSelectedImage(prod.imgurl3)">
+                    </div>
+                    <div class="col-xs-1" ng-show="!!prod.imgurl4">
+                      <img style="width:50px; height:50px;" src="{{prod.imgurl4}}" alt="" ng-click="setSelectedImage(prod.imgurl4)">
+                    </div>
+                    <div class="col-xs-1" ng-show="!!prod.imgurl5">
+                      <img style="width:50px; height:50px;" src="{{prod.imgurl5}}" alt="" ng-click="setSelectedImage(prod.imgurl5)">
+                    </div>
+                    <div class="">
+                      {{prod.price}}
+                    </div>
+                    <div class="row">
+                      <div class="">
+
+                        <div class="btn btn-success" ng-click="sendToCart(prod.imgurl1, prod.name, prod.price, prod.productid)">Add to cart</div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+
 
                   <!-- <div class="radio">
                       <label><input type="radio" name="optradio11">Option 1</label>
@@ -54,7 +70,7 @@
               </div>
           </div>
           <div class="text-center">
-              <a ui-sref="checkout" class="btn btn-danger">Checkout <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a
+              <a ui-sref="checkout" class="btn btn-danger">Checkout <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
           </div>
         </div>
       </div><!-- /.row  -->

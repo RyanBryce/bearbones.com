@@ -3,7 +3,7 @@
 		<i class="" ng-click=""></i>
 		<header><h3 class="">Welcome To Your Cart</h3></header>
 		<div  class="">
-			<div class="" ng-repeat="prod in cart">
+			<div class="well" ng-repeat="prod in cart">
 				<div class="">
 					<p>Product:</p>
 					<img style="height:50px; width:50px;" ng-src="{{prod.url}}"/>
@@ -14,8 +14,8 @@
 					<input class="" type=number ng-model="prod.quantity" ng-change="updateItem(prod, prod.id, prod.quantity)">
 				</p>
 				<div class="">
-					<p>Price:</p>
-					<p>${{prod.total}}</p>
+					<p>Price:
+					<span>${{prod.total}}</span></p
 				</div>
 				<div class="">
 					<a href=""><i ng-click="removeItem(prod.id)" class="">Remove Item</i></a>

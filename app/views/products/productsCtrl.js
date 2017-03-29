@@ -15,6 +15,13 @@ bearService.getProducts().then((res) => {
   // }
 })
 // let cartItem = [];
+$scope.setSelectedImage = function(image) {
+  console.log(image);
+    $scope.selectedImage = image;
+    console.log( `this is selected ${$scope.selectedImage}`)
+}
+
+
 $scope.sendToCart = (url, name, price, id) => {
 // let prod = {
 //   url,
