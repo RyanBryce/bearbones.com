@@ -1,0 +1,33 @@
+<div class="container"  ng-show="!show">
+	<div  class="well">
+		<i class="" ng-click=""></i>
+		<header><h3 class="">Welcome To Your Cart</h3></header>
+		<div  class="">
+			<div class="" ng-repeat="prod in cart">
+				<div class="">
+					<p>Product:</p>
+					<img style="height:50px; width:50px;" ng-src="{{prod.url}}"/>
+				</div>
+
+				<p class="">
+					quantity:
+					<input class="" type=number ng-model="prod.quantity" ng-change="updateItem(prod, prod.id, prod.quantity)">
+				</p>
+				<div class="">
+					<p>Price:</p>
+					<p>${{prod.total}}</p>
+				</div>
+				<div class="">
+					<a href=""><i ng-click="removeItem(prod.id)" class="">Remove Item</i></a>
+				</div>
+			</div>
+
+			<div class="">
+				<h4 class="">Total cost: ${{total}}</h4>
+				  <a ui-sref="checkout" class="btn btn-danger">Checkout <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+					<a ui-sref="products" class="btn btn-success">View Products<span aria-hidden="true"></span></a>
+
+			</div>
+		</div>
+	</div>
+</div>

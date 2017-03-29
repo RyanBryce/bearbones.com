@@ -7,7 +7,57 @@ angular.module('bearBones')
       url: '/api/products'
     }).then(res => res.data)
   };
+// cart
+  this.sendToCart = (url, name, price, id, quantity) => {
+    return $http({
+      method: 'POST',
+      url: '/api/cart/',
+      data: {
+        url,
+        name,
+        price,
+        id,
+        quantity
+      }
+    })
+  };
 
+  this.getUserCart = (prod) => {
+    return $http({
+      method: 'GET',
+      url: '/api/cart/'
+    })
+  };
+
+  this.removeProd = function(id){
+		return $http({
+			method: 'PUT',
+			url: '/api/cart/remove',
+			data: {
+				id
+			}
+		})
+	};
+  this.updateItem = function(item, id, quantity){
+		return $http({
+			method: 'PUT',
+			url: '/api/cart',
+			data: {
+        item,
+        id,
+        quantity
+      }
+		})
+	}
+
+
+
+
+
+
+
+  // var Items = '';
+  // var Total = 0
     // this.login = function( name, password ) {
     //   return $http({
     //     method: 'POST',
@@ -18,7 +68,6 @@ angular.module('bearBones')
     //     }
     //   })
     // };
-
     // this.getFriends = function() {
     // 	return $http({
     //     method: 'GET',

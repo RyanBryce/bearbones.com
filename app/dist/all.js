@@ -47,8 +47,6 @@ angular.module('bearBones').service('bearService', function ($http) {
 
 angular.module('bearBones').controller('homeCtrl', function ($scope, bearService) {
   $scope.isNavCollapsed = true;
-  // $scope.isCollapsed = false;
-  // $scope.isCollapsedHorizontal = false;
 
   //slider
   $scope.myInterval = 5000;

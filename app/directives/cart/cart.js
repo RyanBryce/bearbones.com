@@ -1,0 +1,41 @@
+angular.module('bearBones')
+
+.directive('cart', function(){
+	return {
+		restrict: 'E',
+		templateUrl: './directives/cart/cart.html',
+		link: function(scope, element, attrs){
+			if(scope.cart){
+				console.log('directive cart', scope.cart);
+				scope.$watch('cart', function(){
+					var total = 0;
+					for(var i = 0; i < scope.cart.length; i++){
+						console.log('im inside for',scope.cart[i].price);
+						scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
+						total += scope.cart[i].total;
+						scope.total = total.toFixed(2);
+						console.log('i am total', total);
+					}
+				})
+			}
+		},
+		controller: function($scope, bearService){
+
+
+			$scope.updateItem = function(item, id, quantity){
+				console.log('in direvtive update', item, id, quantity)
+				bearService.updateItem(item, id, quantity).then(function(response){
+					console.log('am i getting anything', response);
+					$scope.cart = response.data
+				})
+			}
+			//
+			$scope.removeItem = function(id){
+				console.log('in remove item', id)
+				bearService.removeProd(id).then(function(response){
+					$scope.cart = response.data
+				})
+			}
+		}
+	}
+})

@@ -10,12 +10,41 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngTouch'
 		.state('products', {
 			url: '/products',
 			templateUrl: './views/products/products.html',
-			controller: 'productsCtrl'
+			controller: 'productsCtrl',
+			resolve: {
+					cart: function(bearService){
+					return bearService.getUserCart().then(function(response){
+						console.log(response.data);
+						return response.data
+					})
+				}
+			}
 		})
 		.state('cart', {
 			url: '/cart',
 			templateUrl: './views/cart/cart.html',
-			controller: 'productsCtrl'
+			controller: 'cartCtrl',
+			resolve: {
+					cart: function(bearService){
+					return bearService.getUserCart().then(function(response){
+						console.log(response.data);
+						return response.data
+					})
+				}
+			}
+		})
+		.state('checkout', {
+			url: '/checkout',
+			templateUrl: './views/checkout/checkout.html',
+			controller: 'checkoutCtrl',
+			resolve: {
+					cart: function(bearService){
+					return bearService.getUserCart().then(function(response){
+						console.log(response.data);
+						return response.data
+					})
+				}
+			}
 		})
 
 		$urlRouterProvider.otherwise('/');

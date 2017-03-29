@@ -22,18 +22,35 @@ app.use(cors());
 app.set('db', massiveInstance);
 let db = app.get('db');
 
-let ctrl = require('./controllers/productsCtrl')
 
 
+let ctrl = require('./controllers/productsCtrl');
+let cartCtrl = require('./controllers/cartCtrl')
 
 
-// app.get('/', (req, res) => {
-//   console.log('hi');
-//   res.send('hi')
-// })
+//products
+
 app.get('/api/products', ctrl.getProducts)
 
 app.post('/api/product', ctrl.createProduct)
+
+// cart section
+
+function cart(req, res, next){
+	if(!req.session.cart){
+		req.session.cart = [];
+		next()
+	}
+	next()
+}
+
+app.post('/api/cart/', cart, cartCtrl.addProduct);
+
+app.get('/api/cart/', cart, cartCtrl.getCart);
+
+app.put('/api/cart/remove', cart, cartCtrl.removeProd);
+
+app.put('/api/cart/', cart, cartCtrl.updateItem);
 
 let port = 3000
 app.listen(port, () => {

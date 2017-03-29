@@ -2,6 +2,8 @@ let db = require('../index').get('db');
 
 module.exports = {
   getProducts: (req, res) => {
+
+      // console.log(req.session.id);
     db.get_products([], (err, results) => {
         res.send(results)
     })

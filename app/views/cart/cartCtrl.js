@@ -1,12 +1,16 @@
-angular.module('bearBones').controller('cartCtrl', function ($scope, bearService, $sce) {
+angular.module('bearBones').controller('cartCtrl', function ($scope, bearService, cart) {
 
-// $scope.isNavCollapsed = true;
+  console.log('this is cartCtrl ',cart)
+  $scope.cart = cart
+  console.log('this is scope cart', $scope.cart);
+
+
+$scope.isNavCollapsed = true;
 //
-bearService.getProducts().then((res) => {
-  console.log(res);
-  if (res) {
-    $scope.products = res
-  }
+
+
+
+
 //   console.log(res[0].imgurl1);
 //   for (var i = 0; i < res.length; i++) {
 //     $scope.img1 = $sce.trustAsResourceUrl(res[i].imgurl1)
@@ -17,5 +21,8 @@ bearService.getProducts().then((res) => {
 //   console.log(src);
 //     return $sce.trustAsResourceUrl(src);
 //   }
+
+
+
 
 });
