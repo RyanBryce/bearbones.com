@@ -1,4 +1,11 @@
-angular.module('bearBones').controller('productsCtrl', function ($scope, bearService, $sce, $interval) {
+angular.module('bearBones').controller('productsCtrl', function ($scope, bearService, $sce, $interval, cart) {
+
+// console.log(cart.length);
+// $scope.watch
+// $scope.cartNum = cart.length;
+$scope.cartNum = cart
+
+console.log(cart);
 
 $scope.isNavCollapsed = true;
 

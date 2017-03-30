@@ -27,29 +27,93 @@
   </div>
   <section class="well">
 
-    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+    <form name="orderForm" ng-submit="submitForm(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
 
       <!-- NAME -->
-      <div class="form-group" >
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" ng-model="name" required>
-          <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+      <div class="form-group" ng-class="{ 'has-error': orderForm.name.$touched && orderForm.name.$invalid }">
+        <label>Full Name</label>
+        <input type="text" name="name" class="form-control" ng-model="user.name" required>
+        <div class="help-block" ng-messages="orderForm.name.$error" ng-if="orderForm.name.$touched">
+          <p ng-message="minlength">Your name is too short.</p>
+          <p ng-message="maxlength">Your name is too long.</p>
+          <p ng-message="required">Your name is required.</p>
+        </div>
+
       </div>
 
-      <!-- USERNAME -->
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
-        <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
-        <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+      <!-- ADDRESS -->
+      <div class="form-group" ng-class="{ 'has-error': orderForm.address.$touched && orderForm.address.$invalid }">
+        <label>Address</label>
+        <input type="text" name="address" class="form-control"
+          ng-model="user.address"
+          ng-minlength="3"
+          ng-maxlength="8"
+          required>
+        <div class="help-block" ng-messages="orderForm.address.$error" ng-show="orderForm.address.$touched">
+          <div ng-messages-include="messages.html"></div>
+        </div>
+      </div>
+      <!-- ADRESS 2 -->
+      <div class="form-group" >
+        <label>Address2</label>
+        <input type="text" name="address2" class="form-control" ng-model="user.address2" ng-minlength="3" ng-maxlength="8" >
+        <div class="help-block" ng-messages="orderForm.address2.$error" ng-show="orderForm.address2.$touched">
+          <div ng-messages-include="messages.html"></div>
+        </div>
+
+
+      </div>
+      <!--  City-->
+    <div class="form-group" ng-class="{ 'has-error': orderForm.city.$touched && orderForm.city.$invalid }">
+        <label>City</label>
+        <input type="text" name="city" class="form-control"
+          ng-model="user.city"
+          ng-minlength="3"
+          ng-maxlength="8"
+          required>
+        <div class="help-block" ng-messages="orderForm.city.$error" ng-show="orderForm.city.$touched">
+          <div ng-messages-include="messages.html"></div>
+        </div>
+      </div>
+      <!-- State -->
+      <div class="form-group" ng-class="{ 'has-error': orderForm.state.$touched && orderForm.state.$invalid }">
+        <label>State</label>
+        <input type="text" name="state" class="form-control"
+        ng-model="user.state"
+        ng-minlength="3"
+        ng-maxlength="8"
+        required>
+        <div class="help-block" ng-messages="orderForm.state.$error" ng-show="orderForm.state.$touched">
+          <div ng-messages-include="messages.html"></div>
+        </div>
+
+      </div>
+      <!-- Zip Code  -->
+      <div class="form-group" ng-class="{ 'has-error': orderForm.zip.$touched && orderForm.zip.$invalid }">
+        <label>Zip Code</label>
+        <input type="text" name="zip" class="form-control"
+        ng-model="user.zip"
+        ng-minlength="3"
+        ng-maxlength="8"
+        required>
+        <div class="help-block" ng-messages="orderForm.zip.$error" ng-show="orderForm.zip.$touched">
+          <div ng-messages-include="messages.html"></div>
+        </div>
 
       </div>
 
       <!-- EMAIL -->
-      <div class="form-group">
+      <div class="form-group" ng-class="{ 'has-error': orderForm.email.$touched && orderForm.email.$invalid }">
         <label>Email</label>
-        <input type="email" name="email" class="form-control" ng-model="email">
-        <p ng-show="userForm.email.$invalid " class="help-block">Enter a valid email.</p>
+        <input type="email" name="email" class="form-control"
+        ng-model="user.email"
+        ng-minlength="4"
+        ng-maxlength="8"
+        required>
+        <div class="help-block" ng-messages="orderForm.email.$error" ng-show="orderForm.email.$touched">
+          <div ng-messages-include="messages.html"></div>
+        </div>
+
       </div>
 
       <!-- SUBMIT BUTTON -->
@@ -57,7 +121,7 @@
 
       <div class="text-left">
         <a type="button" class="btn btn-success" ui-sref="cart">Back to Cart<span aria-hidden="true"></span></a>
-        <a type="submit" ng-disabled="userForm.$invalid" class="btn btn-danger" ui-sref="cart">Place Order<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+        <a type="button" ng-click="userOrder(user, userCart)" ng-disabled="orderForm.$invalid" class="btn btn-danger" >Place Order<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 
       </div>
     </form>

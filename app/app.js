@@ -1,4 +1,4 @@
-angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngTouch'])
+angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessages', 'ngTouch'])
 	.config(function( $stateProvider, $urlRouterProvider ) {
 
 		$stateProvider
