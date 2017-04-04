@@ -7,7 +7,7 @@ angular.module('bearBones')
       url: '/api/products'
     }).then(res => res.data)
   };
-// cart
+// cartget
   this.sendToCart = (url, name, price, id, quantity) => {
     return $http({
       method: 'POST',
@@ -20,6 +20,10 @@ angular.module('bearBones')
         quantity
       }
     })
+    // .then(response => {
+    //   // this.productCount = response.data.length;
+    //   // notify(subscribers)
+    // })
   };
 
   this.getUserCart = (prod) => {

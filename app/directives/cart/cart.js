@@ -8,7 +8,7 @@ angular.module('bearBones')
 			if(scope.cart){
 				console.log('directive cart', scope.cart);
 				scope.$watch('cart', function(){
-					// scope.cartNum = cart.length
+					scope.prodCount = scope.cart.length
 					var total = 0;
 					for(var i = 0; i < scope.cart.length; i++){
 						console.log('im inside for',scope.cart[i].price);
@@ -19,6 +19,9 @@ angular.module('bearBones')
 					}
 				})
 			}
+			// else if (scope.userCart) {
+			//
+			// }
 		},
 		controller: function($scope, bearService){
 

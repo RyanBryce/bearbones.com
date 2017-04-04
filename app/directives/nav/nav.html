@@ -1,5 +1,5 @@
 <header style="" class="">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
 		          <span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a ui-sref="products">Products</a></li>
                 <li><a>About</a></li>
-                <li><a ui-sref="cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">{{cartNum.cartNum}}</span></a></li>
+                <li><a ui-sref="cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">{{prodCount}}</span></a></li>
             </ul>
         </div>
     </nav>

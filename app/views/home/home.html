@@ -1,30 +1,58 @@
 
 <ry-nav></ry-nav>
 
-<body>
-  <div class="">
-      <img src="../img/isbl_3360x840.24691875_qrt8d6xn.jpg" class="img-responsive" alt="Responsive image"><img src="" alt=""></img>
+<body class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <img class="img-responsive" src="../img/isbl_3360x840.24691875_qrt8d6xn.jpg" class="home-image-wrap" alt="Bear image"><img src="" alt=""></img>
       <div class="bear_offset_top">
         <img src="img/isla_180x180.23775976_83pwf17s.jpg" alt="bear bones" class="center-block">
-        <p style="text-align:center;">Durable jewelry for the adventurous & fearless</p>
+        <div class="" style="text-align:center;">
+          <h3>BearBonesDesigns</h3>
+          <h5>Durable jewelry for the adventurous & fearless</h5>
+        </div>
       </div>
+    </div>
       <!-- <img src="../img/isla_500x500.23775976_83pwf17s.jpg" class="img-responsive center-block" alt="Responsive image"> -->
   </div>
-  <div style="height: 305px">
-    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-        <img ng-src="{{slide.image}}" style="margin:auto; width:100%; height:305px;">
-        <div class="carousel-caption">
+  <div class="row">
+    <div class="col-xs-12">
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="home-image-wrap">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" class="home-image-wrap">
+          <img class="home-image-wrap" ng-src="{{slide.image}}">
+          <div class="carousel-caption">
             <!-- <h4>Slide {{slide.id}}</h4> -->
             <!-- <p>{{slide.text}}</p> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="pill">
-    <div class="products_i_love">
-      Products I Love
-    </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <h3 class="about-our-shop-center" >About Our Shop
+      </h3>
+      <div class="row">
+        <div class="col-xs-10 col-xs-push-1 col-xs-pull-1">
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img class="img-responsive img-circle owner-img" src="./img/owner/owner.jpg" alt="">
+          <div class="about-our-shop-center">
+            <h4 >Owner</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-push-1 col-xs-pull-1">
+          <h5 class="about-our-shop-center">
+            Hello beautiful people! I am Sloan Reed, I live an adventurous & fearless lifestyle of climbing, hiking, and snowboarding. Making BearBones leather products was inspired by wanting jewelry that would fit my adventurous life and not break on me. I hope you enjoy my vision and share this life with me ❤🌻🌲❄️
+          </h5>
+        </div>
+      </div>
+     </div>
   </div>
 </body>
 <footer>
