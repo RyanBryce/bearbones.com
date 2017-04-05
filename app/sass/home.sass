@@ -1,27 +1,64 @@
+$backgroundC: #D7C59C
+$navC: #725944
+$navTextC: #1F4C51
+$accesntC: #CA4A00
+$footerC: #6A6A6C
+
 body
   display: block
   height: 100%
   width: 100%
-  background-color: #D7C59C !important
+  background-color:lighten(#D7C59C, 10%) !important
   padding-top: 50px
 
 hr
   margin: 10px 0 20px 0 !important
+  border-color: $accesntC !important
 
 .navbar
   margin-bottom: 0px !important
 
-.bear_offset_top > p
-  position: relative
-  bottom: 15px
-  text-align: center
+.navbar-default
+  background-color: fade-out($navC, .075) !important
+  border-color: lighten($navTextC, 10%) !important
+  .navbar-brand
+    color: darken($backgroundC, 5%) !important
+  .navbar-toggle
+    border-color: darken($backgroundC, 5%) !important
+  .icon-bar
+    background-color: darken($backgroundC, 5%) !important
+  .navbar-nav
+    li
+      a
+        color: darken($backgroundC, 5%) !important
+      .badge
+        color: lighten($accesntC, 5%) !important
+        background-color: darken($backgroundC, 5%) !important
 
-.bear_offset_top  > img
-  position: relative
-  bottom: 20px
-  border-radius: 5px
-  height: 100px
-  width: 100px
+.bear_offset_top
+  p
+    position: relative
+    bottom: 15px
+    text-align: center
+
+.bear_offset_top
+  img
+    position: relative
+    bottom: 20px
+    border-radius: 5px
+    height: 100px
+    width: 100px
+
+.panel-primary
+  .panel-heading
+    background-color: $footerC !important
+
+.panel-body
+  background-color: $backgroundC
+
+.img-thumbnail
+  background-color: lighten($accesntC, 5%) !important
+  border-color: $footerC !important
 
 .home-image-wrap
   text-align: center
@@ -34,11 +71,20 @@ hr
 .owner-img
   margin: auto
 
-.cart_fix_top
-  padding-top: 75px
-
-.product_fix_nav
-  padding-top: 50px
+.product-panel-bottom
+  padding-top: 20px
+  .product-panel-bottom-item-info
+    // text-align: center
 
 .about-our-shop-center
   text-align: center
+  margin-bottom: 40px
+
+footer
+  background-color: $navTextC
+  color: darken($accesntC, 5%)
+  text-align: center
+  padding-bottom: 20px
+  padding-top: 5px
+  a
+    color: darken($accesntC, 5%)

@@ -25,13 +25,6 @@ angular.module('bearBones')
       controller: function($scope, bearService){
         $scope.isNavCollapsed = true;
         $scope.sendToCart = (url, name, price, id) => {
-        // let prod = {
-        //   url,
-        //   name,
-        //   price,
-        //   id
-        // }
-        // $scope.cartNum.push(id)
         price = parseInt(price)
         let quantity = 1;
         bearService.sendToCart(url, name, price, id, quantity).then((res) => {
