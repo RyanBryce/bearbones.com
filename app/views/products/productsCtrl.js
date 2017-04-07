@@ -5,7 +5,7 @@ $scope.isNavCollapsed = true;
 $scope.cart = cart
 
 bearService.getProducts().then((res) => {
-  // console.log(res);
+  console.log(res);
 
     $scope.products = res
     // console.log(res);
