@@ -2,8 +2,6 @@ let db = require('../index').get('db');
 
 module.exports = {
   getProducts: (req, res) => {
-
-      // console.log(req.session.id);
     db.get_products([], (err, results) => {
         res.send(results)
     })
@@ -14,6 +12,7 @@ module.exports = {
       if (err) {
           res.status(420).send(err)
       } else {
+        console.log("this is creat products" + result);
           res.send(result)
       }
     })

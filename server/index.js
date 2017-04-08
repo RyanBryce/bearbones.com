@@ -6,6 +6,7 @@ const massive = require('massive');
 const config = require('./config');
 let connectionString = "postgres://ryanbryce@localhost/bearbones";
 let massiveInstance = massive.connectSync({connectionString})
+var stripe = require('stripe')('config.stripeSecretT');
 
 
 let app = module.exports = express();
@@ -25,7 +26,9 @@ let db = app.get('db');
 
 
 let ctrl = require('./controllers/productsCtrl');
-let cartCtrl = require('./controllers/cartCtrl')
+let cartCtrl = require('./controllers/cartCtrl');
+let stripeCtrl = require('./controllers/stripeCtrl');
+let orderCtrl = require('./controllers/orderCtrl');
 
 
 //products
@@ -51,6 +54,15 @@ app.get('/api/cart/', cart, cartCtrl.getCart);
 app.put('/api/cart/remove', cart, cartCtrl.removeProd);
 
 app.put('/api/cart/', cart, cartCtrl.updateItem);
+
+//stripe section
+
+app.post('/charge', stripeCtrl.charge )
+
+
+//order section
+
+app.post('/api/order', orderCtrl.createOrder)
 
 let port = 3000
 app.listen(port, () => {
