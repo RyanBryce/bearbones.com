@@ -29,5 +29,22 @@ module.exports = {
                 res.send(result)
             }
         })
-    }
+      },
+  getOrder: (req, res, next) => {
+    console.log("this is req getoprder.id", req.params.id);
+    db.get_order_id([req.params.id], (err, resp) => {
+      if (err) {
+
+        console.log(`tthis is getorder err $(err)`);
+        res.status(420).json(err)
+
+      } else {
+
+        console.log("this is get order result ", resp);
+        req.session.order = resp
+        res.json(resp)
+
+      }
+    })
+  }
 }

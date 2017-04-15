@@ -57,12 +57,14 @@ app.put('/api/cart/', cart, cartCtrl.updateItem);
 
 //stripe section
 
-app.post('/charge', stripeCtrl.charge )
+app.post('/charge', stripeCtrl.charge );
 
 
 //order section
 
-app.post('/api/order', orderCtrl.createOrder)
+app.post('/api/order', orderCtrl.createOrder);
+
+app.get('/api/uorder/:id', orderCtrl.getOrder);
 
 let port = 3000
 app.listen(port, () => {

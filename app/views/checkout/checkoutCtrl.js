@@ -1,5 +1,5 @@
 angular.module('bearBones')
-.controller('checkoutCtrl', function($scope, bearService, cart, bearOrder){
+.controller('checkoutCtrl', function($scope, bearService, cart, bearOrder, $state){
   console.log(cart);
   $scope.cart = cart;
   var total = 0;
@@ -20,6 +20,10 @@ angular.module('bearBones')
 
   };
 
+  $scope.goToPayment = function() {
+    $state.go('payment', {id: $scope.orderId});
+  }
+
 $scope.userOrder = (user, userCart) => {
   // let ids = [];
   console.log(user, userCart);
@@ -31,6 +35,13 @@ $scope.userOrder = (user, userCart) => {
   if (user.firstName && user.lastName && user.address && user.city && user.state && user.zip && user.email) {
     console.log("this should not fire", user,userCart);
     bearOrder.postOrder(user, userCart)
+      .then((orderId) => {
+        console.log(orderId.data[0].orderid);
+        var orderId = orderId.data[0].orderid
+        $state.go('payment', {id: orderId});
+
+      })
+    //location.path(/checkout/${orderid})
   }
   else {
     alert('Missing Shipping Info')

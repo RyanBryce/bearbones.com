@@ -21,7 +21,7 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			}
 		})
 		.state('cart', {
-			url: '/cart',
+			url: '/order/cart',
 			templateUrl: './views/cart/cart.html',
 			controller: 'cartCtrl',
 			resolve: {
@@ -33,11 +33,25 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 				}
 			}
 		})
-		.state('checkout', {
-			url: '/checkout',
+		.state('order', {
+			url: '/order/shipping',
 			templateUrl: './views/checkout/checkout.html',
 			controller: 'checkoutCtrl',
 			resolve: {
+					cart: function(bearService){
+					return bearService.getUserCart().then(function(response){
+						console.log(response.data);
+						return response.data
+					})
+				}
+			}
+		})
+		.state('payment', {
+			url: '/order/payment/:id',
+			templateUrl: './views/payme/payme.html',
+			controller: 'payMeCtrl',
+			resolve: {
+
 					cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
 						console.log(response.data);
