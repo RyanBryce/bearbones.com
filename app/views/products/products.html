@@ -1,63 +1,102 @@
 <ry-nav>
 </ry-nav>
 
-<body class="">
-    <div class="">
-        <div class="panel panel-primary" ng-repeat="prod in products">
-            <div class="panel-heading text-center">
-                <h3 class="panel-title">{{prod.name}}</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
+<body class="container-fluid">
+  <div class="text-center">
+    <div class="panel-body" ng-repeat="prod in products">
+      <div class="text-center hidden-sm hidden-md hidden-lg">
+          <h3 class="">{{prod.name}}</h3>
+      </div>
+      <div class="row">
+        <table class="table">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="col-sm-6">
+                  <div class="col-sm-12">
                     <selected-img></selected-img>
-                    <div class="panel-body">
-                        <div class="" ng-modal="initImg" ng-if="initImg">
-                            <img ng-src="{{prod.imgurl1}}" alt="" class="img-thumbnail img-responsive center-block" style="height:355px;">
-                        </div>
-                        <div class="" ng-if="!initImg">
-                            <img ng-src="{{selectedImage}}" alt="" class="img-thumbnail center-block" style="height:355px;">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12 center-block">
-                            <div class="col-xs-2 col-xs-offset-1" ng-show="!!prod.imgurl1">
-                                <img src="{{prod.imgurl1}}" alt="" ng-click="setSelectedImage(prod.imgurl1)" class="img-thumbnail">
-                            </div>
-                            <div class="col-xs-2" ng-show="!!prod.imgurl2">
-                                <img src="{{prod.imgurl2}}" alt="" ng-click="setSelectedImage(prod.imgurl2)" class="img-thumbnail">
-                            </div>
-                            <div class="col-xs-2" ng-show="!!prod.imgurl3">
-                                <img src="{{prod.imgurl3}}" alt="" ng-click="setSelectedImage(prod.imgurl3)" class="img-thumbnail">
-                            </div>
-                            <div class="col-xs-2" ng-show="!!prod.imgurl4">
-                                <img src="{{prod.imgurl4}}" alt="" ng-click="setSelectedImage(prod.imgurl4)" class="img-thumbnail">
-                            </div>
-                            <div class="col-xs-2" ng-show="!!prod.imgurl5">
-                                <img src="{{prod.imgurl5}}" alt="" ng-click="setSelectedImage(prod.imgurl5)" class="img-thumbnail">
-                            </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="col-xs-6 col-xs-offset-1 text-center">
-                                <h5 class="">Product Info</h5>
-                                <div class="">
-                                  <h6>{{prod.description}}</h6>
-                                </div>
-                            </div>
-                            <div class="col-xs-5">
-                              <div class="">
-                                <h5 class="">Price: ${{prod.price}}.00</h5>
-                                  <div class="btn btn-success" ui-sref="products" ng-click="sendToCart(prod.imgurl1, prod.name, prod.price, prod.productid)">Add to cart</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+                  </div>
+                  <div class="col-sm-12" ng-modal="initImg" ng-if="initImg">
+                    <img ng-src="{{prod.imgurl1}}" alt="" class="img-thumbnail img-responsive text-center" style="height:465px;">
+                  </div>
+                  <div class="col-sm-12" ng-if="!initImg">
+                    <img ng-src="{{selectedImage}}" alt="" class="img-thumbnail text-center" style="height:465px;">
+                  </div>
                 </div>
+
+                <div class="col-xs-12 col-sm-6 hidden-xs">
+                  <div class="col-xs-6  col-sm-12 text-center">
+                    <div class="text-center hidden-xs">
+                        <h1 class="">{{prod.name}}</h1>
+                    </div>
+                    <hr>
+                    <h3 class="">Product Info</h3>
+
+                    <div class="">
+                      <h4>{{prod.description}}</h4>
+                    </div>
+                  </div>
+                  <div class="panel-body col-sm-12">
+										<ul>
+											<li><h4>Handmade Item</h4></li>
+											<li><h4>Only ships within United States.</h4></li>
+										</ul>
+									</div>
+                  <div class="col-xs-5 col-sm-12">
+                    <div class="">
+                      <h2 class="">Price: ${{prod.price}}.00</h2>
+                      <div class="btn btn-lg btn-success" ui-sref="products" ng-click="sendToCart(prod.imgurl1, prod.name, prod.price, prod.productid)">Add to cart</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+
+            <p></p>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 text-center">
+                <div class="">
+                  <div class="col-xs-2 col-xs-offset-1" ng-show="!!prod.imgurl1">
+                    <img src="{{prod.imgurl1}}" alt="" ng-click="setSelectedImage(prod.imgurl1)" class="img-thumbnail" style="max-height:100px;">
+                  </div>
+                  <div class="col-xs-2" ng-show="!!prod.imgurl2">
+                    <img src="{{prod.imgurl2}}" alt="" ng-click="setSelectedImage(prod.imgurl2)" class="img-thumbnail" style="max-height:100px;">
+                  </div>
+                  <div class="col-xs-2" ng-show="!!prod.imgurl3">
+                    <img src="{{prod.imgurl3}}" alt="" ng-click="setSelectedImage(prod.imgurl3)" class="img-thumbnail" style="max-height:100px;">
+                  </div>
+                  <div class="col-xs-2" ng-show="!!prod.imgurl4">
+                    <img src="{{prod.imgurl4}}" alt="" ng-click="setSelectedImage(prod.imgurl4)" class="img-thumbnail" style="max-height:100px;">
+                  </div>
+                  <div class="col-xs-2" ng-show="!!prod.imgurl5">
+                    <img src="{{prod.imgurl5}}" alt="" ng-click="setSelectedImage(prod.imgurl5)" class="img-thumbnail" style="max-height:100px;">
+                  </div>
+                </div>
+              </div>
+              <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                  <div class="col-xs-6  text-center">
+                    <h5 class="">Product Info</h5>
+                    <div class="">
+                      <h6>{{prod.description}}</h6>
+                    </div>
+                  </div>
+                  <div class="col-xs-5">
+                    <div class="">
+                      <h5 class="">Price: ${{prod.price}}.00</h5>
+                      <div class="btn btn-success" ui-sref="products" ng-click="sendToCart(prod.imgurl1, prod.name, prod.price, prod.productid)">Add to cart</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </table>
+      </div>
+      <hr>
     </div>
+  </div>
 </body>
 <ry-footer></ry-footer>
 

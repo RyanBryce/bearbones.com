@@ -1,14 +1,13 @@
 <ry-nav></ry-nav>
 <div class="container">
   <div class="well">
-      <div class="text-center">
-          <h3 >Order</h3>
-      </div>
-
+    <div class="text-center">
+        <h3 >Order</h3>
+    </div>
     <table class="table">
          <tr ng-repeat="p in cart">
              <td>
-               <img style="height:50px; width:50px;" ng-src="{{p.url}}" alt=""><br>
+               <img class="text-center img-tumbnail"style="height:50px; width:50px;" ng-src="{{p.url}}" alt=""><br>
                  {{p.name}}
              </td>
              <td>
@@ -145,6 +144,7 @@
 
   </section>
 </div>
+<ry-footer></ry-footer>
 <!-- <form action="/charge" method="POST">
   <script
     data-key="pk_test_wjVLR03Xb2k798iDsT0F66a5"

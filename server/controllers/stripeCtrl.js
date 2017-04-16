@@ -5,8 +5,8 @@ const stripe = require('stripe')(config.stripeSecretT);
 module.exports = {
 
   charge: (req, res, next) => {
-    console.log('this is req.body stripe stuf n things',req.body.token.id);
-    console.log('this is req.body session cart n things',req.session.order);
+    console.log('this is req.body stripe stuf n things', req.body.token.id);
+    console.log('this is req.body session cart n things', req.session);
     var token = req.body.token.id
     var cart = req.session.order
     var total = 0;
@@ -24,6 +24,7 @@ module.exports = {
       if(err){
         console.log(err);
       } else {
+        req.session.cart = [];
         console.log("cool beans");
       }
       // asynchronously called

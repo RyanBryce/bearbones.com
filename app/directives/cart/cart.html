@@ -1,33 +1,71 @@
-<div class="container cart_fix_top"  ng-show="!show">
-	<div  class="well">
-		<i class="" ng-click=""></i>
-		<header><h3 class="">Welcome To Your Cart</h3></header>
-		<div  class="">
+<div class="container">
+	<div class=" text-center">
+		<header>
+			<h3 class="">Welcome To Your Cart</h3>
+		</header>
+		<table class="table">
 			<div class="well" ng-repeat="prod in cart">
-				<div class="">
-					<p>Product:</p>
-					<img class="img-responsive" ng-src="{{prod.url}}"/>
-				</div>
+				<div class="row">
 
-				<p class="">
-					quantity:
-					<input class="" type=number ng-model="prod.quantity" ng-change="updateItem(prod, prod.id, prod.quantity)">
-				</p>
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<img class="img-responsive img-thumbnail" style="max-height:250px;" ng-src="{{prod.url}}"/>
+						</div>
+						<div class="col-sm-6">
+							<div class="com-sm-12">
+								<p>Product: {{prod.name}}</p>
+							</div>
+							<hr>
+							<div class="col-sm-12">
+								<div class="panel-lg panel-default co-sm-12">
+									<div class="panel-body col-sm-12">
+										<ul>
+											<li>Handmade Item</li>
+											<li>Only ships within United States.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="">
+					<p class="col-xs-6">
+						quantity:
+						<!-- <input class="" type=number ng-model="prod.quantity" ng-change="updateItem(prod, prod.id, prod.quantity)"> -->
+						<select class="form-control col-xs-6" ng-model="prod.quantity" ng-change="updateItem(prod, prod.id, prod.quantity)">
+							<option value="" disabled selected>1</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</p>
+				</div>
+				<div class="col-xs-">
 					<p>Price:
-					<span>${{prod.total.toFixed(2)}}</span></p
+						<span>${{prod.total.toFixed(2)}}</span>
+					</p>
 				</div>
-				<div class="">
-					<a href=""><i ng-click="removeItem(prod.id)" class="">Remove Item</i></a>
-				</div>
+					<div class="">
+						<a href=""><i ng-click="removeItem(prod.id)" class="">Remove Item</i></a>
+					</div>
 			</div>
+		</table>
+	</div>
+</div>
 
-
-			</div>
-			<div class="">
-				<h4 class="">Total cost: ${{total}}</h4>
-				<a ui-sref="products" class="btn btn-primary">View Products<span aria-hidden="true"></span></a>
-				<a ui-sref="order" class="btn btn-success">Submit Shipping Info <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+<div class="row text-center">
+	<div class="col-sm-12">
+		<div class="col-sm-1 col-sm-offset-3">
+			<button ui-sref="products" class="btn btn-primary">View Products</button>
+		</div>
+		<div class="col-sm-4">
+			<h3 style="margin-top:0px; margin-bottom:40px;">Total cost: ${{total}}</h3>
+		</div>
+		<div class="col-sm-2 col-sm-pull-1">
+			<a ui-sref="order" class="btn btn-success">Submit Shipping Info <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </div>
