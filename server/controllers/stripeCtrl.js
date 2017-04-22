@@ -26,7 +26,7 @@ module.exports = {
       if(err){
         res.json(err)
         console.log(err);
-      } else if(charge){
+      } else {
         req.session.order = []
         req.session.cart = [];
         console.log("cool beans");

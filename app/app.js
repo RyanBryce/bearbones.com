@@ -74,6 +74,19 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 				}
 			}
 		})
+		.state('update', {
+			url: '/order/update/:id',
+			templateUrl: './views/updateOrder/updateOrder.html',
+			controller: 'updateOrderCtrl',
+			resolve: {
+				cart: function(bearService){
+					return bearService.getUserCart().then(function(response){
+						console.log(response.data);
+						return response.data
+					})
+				}
+			}
+		})
 
 		$urlRouterProvider.otherwise('/');
 });

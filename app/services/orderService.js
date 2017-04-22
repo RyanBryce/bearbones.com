@@ -21,6 +21,20 @@ angular.module('bearBones').service('bearOrder', function($http) {
       }
     })
   };
+  this.updateOrder = (user, userCart, id) => {
+    return $http({
+      method: 'PUT',
+      url: '/api/update/order/' + id,
+      data: {
+        user,
+        userCart
+      }
+    })
+    // .then((res) => {
+    //   console.log(res);
+    // })
+  };
+
   this.payMe = (token) => {
     return $http({
       method: 'POST',

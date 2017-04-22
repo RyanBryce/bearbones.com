@@ -66,6 +66,8 @@ app.post('/api/order', orderCtrl.createOrder);
 
 app.get('/api/uorder/:id', orderCtrl.getOrder);
 
+app.put('/api/update/order/:id', orderCtrl.updateOrder);
+
 const port = 3000
 app.listen(port, () => {
   console.log(`sup from port ${port}`);
