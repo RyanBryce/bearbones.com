@@ -38,7 +38,7 @@ app.get('/api/products', ctrl.getProducts)
 app.post('/api/product', ctrl.createProduct)
 
 // cart section
-
+//cart middleware
 function cart(req, res, next){
 	if(!req.session.cart){
 		req.session.cart = [];
@@ -53,7 +53,7 @@ app.get('/api/cart/', cart, cartCtrl.getCart);
 
 app.put('/api/cart/remove', cart, cartCtrl.removeProd);
 
-app.put('/api/cart/', cart, cartCtrl.updateItem);
+app.put('/api/cart/', cart, cartCtrl.updateProd);
 
 //stripe section
 
@@ -67,6 +67,8 @@ app.post('/api/order', orderCtrl.createOrder);
 app.get('/api/uorder/:id', orderCtrl.getOrder);
 
 app.put('/api/update/order/:id', orderCtrl.updateOrder);
+
+//port section
 
 const port = 3000
 app.listen(port, () => {

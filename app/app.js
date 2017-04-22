@@ -14,7 +14,6 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			resolve: {
 					cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
-						console.log(response.data);
 						return response.data
 					})
 				}
@@ -27,7 +26,6 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			resolve: {
 					cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
-						console.log(response.data);
 						return response.data
 					})
 				}
@@ -40,7 +38,6 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			resolve: {
 					cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
-						console.log(response.data);
 						return response.data
 					})
 				}
@@ -51,10 +48,8 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			templateUrl: './views/payme/payme.html',
 			controller: 'payMeCtrl',
 			resolve: {
-
 					cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
-						console.log(response.data);
 						return response.data
 					})
 				}
@@ -65,10 +60,8 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			templateUrl: './views/success/success.html',
 			controller: 'success',
 			resolve: {
-
 					cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
-						console.log(response.data);
 						return response.data
 					})
 				}
@@ -81,7 +74,6 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 			resolve: {
 				cart: function(bearService){
 					return bearService.getUserCart().then(function(response){
-						console.log(response.data);
 						return response.data
 					})
 				}

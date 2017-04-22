@@ -1,4 +1,6 @@
 angular.module('bearBones').service('bearOrder', function($http) {
+
+  //this adds an order into my server from the passing in the userCart and
   this.postOrder = (user, userCart) => {
     return $http({
       method: 'POST',
@@ -30,9 +32,6 @@ angular.module('bearBones').service('bearOrder', function($http) {
         userCart
       }
     })
-    // .then((res) => {
-    //   console.log(res);
-    // })
   };
 
   this.payMe = (token) => {

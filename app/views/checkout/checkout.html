@@ -29,32 +29,46 @@
     <div class="text-center">
         <h3 >Shipping Info</h3>
     </div>
-
+    <!--this uses ng-messages to start form validation by setting an objects properties  -->
     <form name="orderForm" ng-submit="submitForm(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
 
       <!-- NAME -->
+      <!-- this is the crappy old way i learned first to use form valisation. looks super fun eh? -->
       <div class="form-group" ng-class="{ 'has-error': orderForm.firstName.$touched && orderForm.firstName.$invalid }">
         <label>First Name</label>
-        <input type="text" name="firstName" class="form-control" ng-model="user.firstName" required>
+        <input type="text"
+        name="firstName"
+        class="form-control"
+        ng-model="user.firstName" required>
         <div class="help-block" ng-messages="orderForm.firstName.$error" ng-if="orderForm.firstName.$touched">
-          <p ng-message="minlength" class="bg-danger">Your first name is too short.</p>
-          <p ng-message="maxlength" class="bg-danger">Your first name is too long.</p>
-          <p ng-message="required" class="bg-danger">Your first name is required.</p>
+          <p ng-message="minlength"
+          class="bg-danger">Your first name is too short.</p>
+          <p ng-message="maxlength"
+          class="bg-danger">Your first name is too long.</p>
+          <p ng-message="required"
+          class="bg-danger">Your first name is required.</p>
         </div>
 
       </div>
-
+      <!-- crappiness continues -->
       <div class="form-group" ng-class="{ 'has-error': orderForm.lastName.$touched && orderForm.lastName.$invalid }">
         <label>Last Name</label>
-        <input type="text" name="lastName" class="form-control" ng-model="user.lastName" required>
+        <input type="text"
+        name="lastName"
+        class="form-control"
+        ng-model="user.lastName" required>
         <div class="help-block" ng-messages="orderForm.lastName.$error" ng-if="orderForm.lastName.$touched">
-          <p ng-message="minlength" class="bg-danger">Your last name is too short.</p>
-          <p ng-message="maxlength" class="bg-danger">Your last name is too long.</p>
-          <p ng-message="required" class="bg-danger">Your last name is required.</p>
+          <p ng-message="minlength"
+          class="bg-danger">Your last name is too short.</p>
+          <p ng-message="maxlength"
+          class="bg-danger">Your last name is too long.</p>
+          <p ng-message="required"
+          class="bg-danger">Your last name is required.</p>
         </div>
 
       </div>
-
+        <!-- start of ng-messages!!! allows me to use a template html using ng-messages-include="messages.html",
+             makes an object under the hood to check for  -->
       <!-- ADDRESS -->
       <div class="form-group" ng-class="{ 'has-error': orderForm.address.$touched && orderForm.address.$invalid }">
         <label>Address</label>
@@ -68,6 +82,7 @@
         </div>
       </div>
       <!-- ADRESS 2 -->
+
       <div class="form-group" >
         <label>Address2</label>
         <input type="text" name="address2" class="form-control" ng-model="user.address2" ng-minlength="3" ng-maxlength="80" >
@@ -93,10 +108,10 @@
       <div class="form-group" ng-class="{ 'has-error': orderForm.state.$touched && orderForm.state.$invalid }">
         <label>State</label>
         <input type="text" name="state" class="form-control"
-        ng-model="user.state"
-        ng-minlength="3"
-        ng-maxlength="20"
-        required>
+          ng-model="user.state"
+          ng-minlength="3"
+          ng-maxlength="20"
+          required>
         <div class="help-block" ng-messages="orderForm.state.$error" ng-show="orderForm.state.$touched">
           <div ng-messages-include="messages.html"></div>
         </div>
@@ -106,10 +121,10 @@
       <div class="form-group" ng-class="{ 'has-error': orderForm.zip.$touched && orderForm.zip.$invalid }">
         <label>Zip Code/Postal Code</label>
         <input type="text" name="zip" class="form-control"
-        ng-model="user.zip"
-        ng-minlength="4"
-        ng-maxlength="10"
-        required>
+            ng-model="user.zip"
+            ng-minlength="4"
+            ng-maxlength="10"
+            required>
         <div class="help-block" ng-messages="orderForm.zip.$error" ng-show="orderForm.zip.$touched">
           <div ng-messages-include="messages.html"></div>
         </div>
@@ -120,10 +135,10 @@
       <div class="form-group" ng-class="{ 'has-error': orderForm.email.$touched && orderForm.email.$invalid }">
         <label>Email</label>
         <input type="email" name="email" class="form-control"
-        ng-model="user.email"
-        ng-minlength="4"
-        ng-maxlength="40"
-        required>
+          ng-model="user.email"
+          ng-minlength="4"
+          ng-maxlength="40"
+          required>
         <div class="help-block" ng-messages="orderForm.email.$error" ng-show="orderForm.email.$touched">
           <div ng-messages-include="messages.html"></div>
         </div>
@@ -131,28 +146,14 @@
       </div>
 
       <!-- SUBMIT BUTTON -->
-      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
 
       <div class="text-left">
         <a type="button" class="btn btn-success" ui-sref="cart">Back to Cart<span aria-hidden="true"></span></a>
-        <a type="button"  ng-click="userOrder(user, cart)" ng-disabled="orderForm.$invalid" class="btn btn-danger" >Order Overview<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-
-        <!--ui-sref=(id: orderid)  -->
-
+        <a type="button"  ng-click="userOrder(user, cart)" ng-disabled="orderForm.$invalid" class="btn btn-danger" >Order Overview<span             class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
       </div>
     </form>
 
   </section>
 </div>
+
 <ry-footer></ry-footer>
-<!-- <form action="/charge" method="POST">
-  <script
-    data-key="pk_test_wjVLR03Xb2k798iDsT0F66a5"
-    data-amount="2000"
-    data-name="Demo Site"
-    data-description="2 widgets"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto">
-  </script>
-</form>
-<button ng-click="clicker()" id="customButton">Purchase</button> -->

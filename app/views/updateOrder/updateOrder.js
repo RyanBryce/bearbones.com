@@ -1,21 +1,18 @@
 angular.module('bearBones')
 .controller('updateOrderCtrl', function($scope, bearService, cart, bearOrder, $state, $stateParams){
-  console.log(cart);
+
   $scope.cart = cart;
-  var total = 0;
-	for(var i = 0; i < $scope.cart.length; i++){
-		$scope.cart[i].total = $scope.cart[i].quantity * $scope.cart[i].price;
-		total += $scope.cart[i].total;
-		$scope.total = total.toFixed(2);
-	}
 
+  //grabs id from url
   const id = $stateParams.id
+  //sends id to server where it updates the order table in my db and then sends back response
   bearOrder.getOrder(id).then((res) => {
-    console.log(cart);
-    console.log('this is the order get response ', res.data);
-
+    //res is an array of obj and i only needed the data in the first indexed response obj
     const dbObj= res.data[0]
-    console.log(dbObj)
+
+    //this is the user object used to set the values in the input form
+    //this set so the users order in my database doesn't get messed up by the user
+    //also allows user to see what they input in checkout view to eliminate guess work
     $scope.user = {
       firstName: dbObj.firstname,
       lastName: dbObj.lastname,
@@ -34,29 +31,17 @@ angular.module('bearBones')
       $scope.total = total.toFixed(2);
     }
   })
-
-  $scope.goToPayment = function() {
-    $state.go('payment', {id: $scope.orderId});
-  }
-
+  //on ng-click checks to make sure there is values on the ng-model
+  // updates user order in my db with new form values
+  //and grabs correct order id from database to be set in view
+  // sends orderid as params to payment view so correct order can be shown
   $scope.updateOrder = (user, userCart) => {
-    // let ids = [];
-    console.log(user, userCart);
-    // for (var i = 0; i < userCart.length; i++) {
-    //   console.log(userCart[i].id);
-    //   ids.push(parseInt(userCart[i].id))
-    // }
-    // console.log(ids);
     if (user.firstName && user.lastName && user.address && user.city && user.state && user.zip && user.email) {
-      console.log("this should not fire", user, userCart);
       bearOrder.updateOrder(user, userCart, id)
-        .then((orderId) => {
-          console.log(orderId.data[0].orderid);
-          var orderId = orderId.data[0].orderid
-          $state.go('payment', {id: orderId});
-
-        })
-      //location.path(/checkout/${orderid})
+      .then((orderId) => {
+        var orderId = orderId.data[0].orderid
+        $state.go('payment', {id: orderId});
+      })
     }
     else {
       alert('Missing Shipping Info')

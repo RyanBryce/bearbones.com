@@ -7,7 +7,7 @@ angular.module('bearBones')
       url: '/api/products'
     }).then(res => res.data)
   };
-// cartget
+
   this.sendToCart = (url, name, price, id, quantity) => {
     return $http({
       method: 'POST',
@@ -20,10 +20,6 @@ angular.module('bearBones')
         quantity
       }
     })
-    // .then(response => {
-    //   // this.productCount = response.data.length;
-    //   // notify(subscribers)
-    // })
   };
 
   this.getUserCart = (prod) => {
@@ -53,30 +49,4 @@ angular.module('bearBones')
       }
 		})
 	}
-
-
-
-
-
-
-
-  // var Items = '';
-  // var Total = 0
-    // this.login = function( name, password ) {
-    //   return $http({
-    //     method: 'POST',
-    //     url: '/api/login',
-    //     data: {
-    //       name,
-    //       password
-    //     }
-    //   })
-    // };
-    // this.getFriends = function() {
-    // 	return $http({
-    //     method: 'GET',
-    //     url: '/api/profiles'
-    //   })
-    // };
-
 });
