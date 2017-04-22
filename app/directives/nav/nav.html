@@ -7,13 +7,19 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
 		         </button>
+             <button type="button" class="navbar-toggle" ui-sref="cart" style="padding-bottom: 6px; padding-top: 6px;">
+ 		          <span class="sr-only">cart</span>
+               <span class="glyphicon glyphicon-shopping-cart"></span>
+               <span class="badge">{{prodCount}}</span>
+
+ 		         </button>
              <a class="navbar-brand" href="#">BearBonesDesigns</a>
         </div>
         <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
             <ul class="nav navbar-nav navbar-right">
                 <li><a ui-sref="products">Products</a></li>
                 <li><a href="#About">About</a></li>
-                <li><a ui-sref="cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">{{prodCount}}</span></a></li>
+                <li class="hidden-xs"><a ui-sref="cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">{{prodCount}}</span></a></li>
             </ul>
         </div>
     </nav>

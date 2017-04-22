@@ -14,7 +14,7 @@ angular.module('bearBones')
               scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
               total += scope.cart[i].total;
               scope.total = total.toFixed(2);
-              console.log('i am total', total);
+              console.log('i am $scope.cart 2', scope.cart);
             }
           })
         }
@@ -23,21 +23,16 @@ angular.module('bearBones')
         // }
       },
       controller: function($scope, bearService){
+        $scope.quantityOptions = [1, 2, 3, 4, 5]
         $scope.isNavCollapsed = true;
         $scope.sendToCart = (url, name, price, id) => {
         price = parseInt(price)
-        let quantity = 1;
+        const quantity = 1;
         bearService.sendToCart(url, name, price, id, quantity).then((res) => {
           $scope.cart = res.data
+          console.log("this is $scope.cart", $scope.cart)
         })
-
-
-          // console.log(prod);
-          // cartItem.push(prod)
         }
       }
-
-
-
     }
   })

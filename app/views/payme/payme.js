@@ -1,5 +1,5 @@
 angular.module('bearBones')
-.controller('payMeCtrl', function ($scope, bearOrder, $stateParams, cart) {
+.controller('payMeCtrl', function ($scope, bearOrder, $stateParams, cart, $state) {
   $scope.cart = cart
   console.log(`This is inside payment cart ${cart}`);
 
@@ -37,7 +37,15 @@ angular.module('bearBones')
       console.log(token);
       // You can access the token ID with `token.id`.
       // Get the token ID to your server-side code for use.
-      bearOrder.payMe(token)
+      bearOrder.payMe(token).then((res) => {
+        console.log(`this is my res ${res.data}`);
+        if (res.data === "cool beans") {
+          $state.go('success', {id: id});
+        }
+        else if(err.type){
+          alert('Ohh no! Somethings wrong with your info or payment.')
+        }
+      })
     }
   });
 

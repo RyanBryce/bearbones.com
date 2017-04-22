@@ -27,6 +27,11 @@ hr
     border-color: darken($backgroundC, 5%) !important
   .icon-bar
     background-color: darken($backgroundC, 5%) !important
+  .glyphicon
+    color: darken($backgroundC, 5%) !important
+  .badge
+    background-color: darken($backgroundC, 5%) !important
+    color: lighten($accesntC, 5%) !important
   .navbar-nav
     li
       a
@@ -35,11 +40,6 @@ hr
         color: lighten($accesntC, 5%) !important
         background-color: darken($backgroundC, 5%) !important
 
-.bear_offset_top
-  p
-    position: relative
-    bottom: 15px
-    text-align: center
 
 .bear_offset_top
   img
@@ -48,6 +48,32 @@ hr
     border-radius: 5px
     height: 100px
     width: 100px
+    @media screen and (min-width: 768px)
+      height: 200px
+      width: 200px
+    @media screen and (min-width: 992px)
+      height: 300px
+      width: 300px
+      position: relative
+      bottom: 45px
+      text-align: center
+  h3
+    position: relative
+    bottom: 25px
+    text-align: center
+    @media screen and (min-width: 992px)
+      position: relative
+      bottom: 45px
+      text-align: center
+  h5
+    position: relative
+    bottom: 25px
+    text-align: center
+    @media screen and (min-width: 992px)
+      position: relative
+      bottom: 45px
+      text-align: center
+
 
 .panel-primary
   .panel-heading

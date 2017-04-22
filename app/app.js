@@ -60,6 +60,20 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
 				}
 			}
 		})
+		.state('success', {
+			url: '/order/success/:id',
+			templateUrl: './views/success/success.html',
+			controller: 'success',
+			resolve: {
+
+					cart: function(bearService){
+					return bearService.getUserCart().then(function(response){
+						console.log(response.data);
+						return response.data
+					})
+				}
+			}
+		})
 
 		$urlRouterProvider.otherwise('/');
 });

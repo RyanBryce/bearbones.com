@@ -21,16 +21,16 @@ hr {
     border-color: #d0ba8a !important; }
   .navbar-default .icon-bar {
     background-color: #d0ba8a !important; }
+  .navbar-default .glyphicon {
+    color: #d0ba8a !important; }
+  .navbar-default .badge {
+    background-color: #d0ba8a !important;
+    color: #e45300 !important; }
   .navbar-default .navbar-nav li a {
     color: #d0ba8a !important; }
   .navbar-default .navbar-nav li .badge {
     color: #e45300 !important;
     background-color: #d0ba8a !important; }
-
-.bear_offset_top p {
-  position: relative;
-  bottom: 15px;
-  text-align: center; }
 
 .bear_offset_top img {
   position: relative;
@@ -38,6 +38,37 @@ hr {
   border-radius: 5px;
   height: 100px;
   width: 100px; }
+  @media screen and (min-width: 768px) {
+    .bear_offset_top img {
+      height: 200px;
+      width: 200px; } }
+  @media screen and (min-width: 992px) {
+    .bear_offset_top img {
+      height: 300px;
+      width: 300px;
+      position: relative;
+      bottom: 45px;
+      text-align: center; } }
+
+.bear_offset_top h3 {
+  position: relative;
+  bottom: 25px;
+  text-align: center; }
+  @media screen and (min-width: 992px) {
+    .bear_offset_top h3 {
+      position: relative;
+      bottom: 45px;
+      text-align: center; } }
+
+.bear_offset_top h5 {
+  position: relative;
+  bottom: 25px;
+  text-align: center; }
+  @media screen and (min-width: 992px) {
+    .bear_offset_top h5 {
+      position: relative;
+      bottom: 45px;
+      text-align: center; } }
 
 .panel-primary .panel-heading {
   background-color: #2d6f76 !important; }

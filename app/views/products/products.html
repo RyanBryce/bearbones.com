@@ -17,10 +17,10 @@
                     <selected-img></selected-img>
                   </div>
                   <div class="col-sm-12" ng-modal="initImg" ng-if="initImg">
-                    <img ng-src="{{prod.imgurl1}}" alt="" class="img-thumbnail img-responsive text-center" style="height:465px;">
+                    <img ng-src="{{prod.imgurl1}}" alt="" class="img-thumbnail img-responsive text-center" style="max-height:465px;">
                   </div>
                   <div class="col-sm-12" ng-if="!initImg">
-                    <img ng-src="{{selectedImage}}" alt="" class="img-thumbnail text-center" style="height:465px;">
+                    <img ng-src="{{selectedImage}}" alt="" class="img-thumbnail text-center" style="max-height:465px;">
                   </div>
                 </div>
 

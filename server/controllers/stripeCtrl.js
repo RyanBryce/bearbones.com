@@ -5,9 +5,10 @@ const stripe = require('stripe')(config.stripeSecretT);
 module.exports = {
 
   charge: (req, res, next) => {
-    console.log('this is req.body stripe stuf n things', req.body.token.id);
+    console.log('this is req.body stripe stuf n things', req.body.token.email);
     console.log('this is req.body session cart n things', req.session);
     var token = req.body.token.id
+    var email = req.body.token.email
     var cart = req.session.order
     var total = 0;
   	for(var i = 0; i < cart.length; i++){
@@ -19,13 +20,18 @@ module.exports = {
       amount: total * 100,
       currency: "usd",
       description: "Example charge",
-      source: token
+      source: token,
+      receipt_email: email
     }, function(err, charge) {
       if(err){
+        res.json(err)
         console.log(err);
-      } else {
+      } else if(charge){
+        req.session.order = []
         req.session.cart = [];
         console.log("cool beans");
+        const cool = "cool beans"
+        res.json(cool)
       }
       // asynchronously called
     });
