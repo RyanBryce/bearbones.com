@@ -23,7 +23,7 @@ angular.module('bearBones')
   $scope.updated = () => {
     $state.go('update', {id: id});
   }
-  console.log(process.env);
+
   var handler = StripeCheckout.configure({
     key: 'pk_test_wjVLR03Xb2k798iDsT0F66a5',
     image: 'https://img0.etsystatic.com/169/0/14378474/isla_180x180.23775976_83pwf17s.jpg',

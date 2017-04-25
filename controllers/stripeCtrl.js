@@ -1,5 +1,5 @@
 let db = require('../index').get('db');
-const config = require('../config');
+// const config = require('../config');
 const stripe = require('stripe')(process.env.STRIPESECRETT);
 
 module.exports = {
