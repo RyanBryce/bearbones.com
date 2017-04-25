@@ -2,15 +2,15 @@ const express = require('express');
 const session = require('express-session')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const massive = require('massive');
 const config = require('./config');
+const massive = require('massive');
 let connectionString = "postgres://ryanbryce@localhost/bearbones";
 let massiveInstance = massive.connectSync({connectionString})
 var stripe = require('stripe')('config.stripeSecretT');
 
 
-let app = module.exports = express();
-app.use(express.static('../app'));
+var app = module.exports = express();
+app.use(express.static('./app'));
 app.use(bodyParser.json());
 app.use(session({
   secret: config.sessionSecret,
@@ -21,7 +21,7 @@ app.use(session({
 app.use(cors());
 
 app.set('db', massiveInstance);
-let db = app.get('db');
+var db = app.get('db');
 
 
 
