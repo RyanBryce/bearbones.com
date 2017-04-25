@@ -6,8 +6,6 @@ const cors = require('cors');
 
 
 
-
-
 // var pg = require('pg');
 // pg.defaults.ssl = true;
 // pg.connect(process.env.DATABASE_URL, function(err, client) {
@@ -20,7 +18,6 @@ const cors = require('cors');
 //       console.log(JSON.stringify(row));
 //     });
 // });
-
 
 
 
