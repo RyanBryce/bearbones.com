@@ -8,24 +8,24 @@ const cors = require('cors');
 
 
 
-var pg = require('pg');
-pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
-
-  client
-    .query('SELECT table_schema,table_name FROM information_schema.tables;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
+// var pg = require('pg');
+// pg.defaults.ssl = true;
+// pg.connect(process.env.DATABASE_URL, function(err, client) {
+//   if (err) throw err;
+//   console.log('Connected to postgres! Getting schemas...');
+//
+//   client
+//     .query('SELECT table_schema,table_name FROM information_schema.tables;')
+//     .on('row', function(row) {
+//       console.log(JSON.stringify(row));
+//     });
+// });
 
 
 
 
 const massive = require('massive');
-let connectionString = process.env.DATABASE_URL;
+let connectionString = 'postgres://bbqykefkgflnxc:049234baf7300b6a10a836903d40798d5f4dfa17b48b60e3d1c62a5ef396e7c9@ec2-23-21-111-81.compute-1.amazonaws.com:5432/d6s63k1ai5slel';
 let massiveInstance = massive.connectSync({connectionString})
 var stripe = require('stripe')(process.env.STRIPESECRETT);
 console.log(process.env);
