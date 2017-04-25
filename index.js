@@ -25,7 +25,7 @@ const cors = require('cors');
 
 
 const massive = require('massive');
-let connectionString = 'postgres://bbqykefkgflnxc:049234baf7300b6a10a836903d40798d5f4dfa17b48b60e3d1c62a5ef396e7c9@ec2-23-21-111-81.compute-1.amazonaws.com:5432/d6s63k1ai5slel';
+let connectionString = process.env.DATABASE_URL;
 let massiveInstance = massive.connectSync({connectionString})
 var stripe = require('stripe')(process.env.STRIPESECRETT);
 console.log(process.env);
