@@ -6,14 +6,14 @@ const config = require('./config');
 const massive = require('massive');
 let connectionString = "postgres://ryanbryce@localhost/bearbones";
 let massiveInstance = massive.connectSync({connectionString})
-var stripe = require('stripe')('config.stripeSecretT');
-
+var stripe = require('stripe')(process.env.STRIPESECRETT);
+console.log(process.env);
 
 var app = module.exports = express();
 app.use(express.static('./app'));
 app.use(bodyParser.json());
 app.use(session({
-  secret: config.sessionSecret,
+  secret: process.env.SESSIONSECRET,
   resave: false,
   saveUninitialized: true
  }));
