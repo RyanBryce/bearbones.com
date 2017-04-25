@@ -71,6 +71,6 @@ app.put('/api/update/order/:id', orderCtrl.updateOrder);
 //port section
 
 const port = 3000
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`sup from port ${port}`);
 })
