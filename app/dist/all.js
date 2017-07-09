@@ -77,203 +77,12 @@ angular.module('bearBones', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ngMessag
   $urlRouterProvider.otherwise('/');
 });
 
-angular.module('bearBones').service('bearOrder', function ($http) {
+angular.module('bearBones').controller('cartCtrl', function ($scope, bearService, cart) {
 
-  //this adds an order into my server from the passing in the userCart and
-  this.postOrder = function (user, userCart) {
-    return $http({
-      method: 'POST',
-      url: '/api/order',
-      data: {
-        user: user,
-        userCart: userCart
-      }
-    });
-    // .then((res) => {
-    //   console.log(res);
-    // })
-  };
-  this.getOrder = function (id) {
-    return $http({
-      method: 'GET',
-      url: '/api/uorder/' + id,
-      data: {
-        id: id
-      }
-    });
-  };
-  this.updateOrder = function (user, userCart, id) {
-    return $http({
-      method: 'PUT',
-      url: '/api/update/order/' + id,
-      data: {
-        user: user,
-        userCart: userCart
-      }
-    });
-  };
+  $scope.cart = cart;
 
-  this.payMe = function (token) {
-    return $http({
-      method: 'POST',
-      url: "/charge",
-      data: {
-        token: token
-      }
-    });
-  };
-});
-
-angular.module('bearBones').service('bearService', function ($http) {
-
-  this.getProducts = function () {
-    return $http({
-      method: 'GET',
-      url: '/api/products'
-    }).then(function (res) {
-      return res.data;
-    });
-  };
-
-  this.sendToCart = function (url, name, price, id, quantity) {
-    return $http({
-      method: 'POST',
-      url: '/api/cart/',
-      data: {
-        url: url,
-        name: name,
-        price: price,
-        id: id,
-        quantity: quantity
-      }
-    });
-  };
-
-  this.getUserCart = function (prod) {
-    return $http({
-      method: 'GET',
-      url: '/api/cart/'
-    });
-  };
-
-  this.removeProd = function (id) {
-    return $http({
-      method: 'PUT',
-      url: '/api/cart/remove',
-      data: {
-        id: id
-      }
-    });
-  };
-  this.updateItem = function (item, id, quantity) {
-    return $http({
-      method: 'PUT',
-      url: '/api/cart',
-      data: {
-        item: item,
-        id: id,
-        quantity: quantity
-      }
-    });
-  };
-});
-
-angular.module('bearBones').directive('cart', function () {
-  return {
-    restrict: 'E',
-    templateUrl: './directives/cart/cart.html',
-    link: function link(scope, element, attrs) {
-      //watches my session cart
-      if (scope.cart) {
-        scope.$watch('cart', function () {
-          //sets cart badge number in the nav
-          scope.prodCount = scope.cart.length;
-          var total = 0;
-          //loops over cart, multiplies the price by quantity, uses toFixed to limit decimal two digits and assigns the total
-          for (var i = 0; i < scope.cart.length; i++) {
-            scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
-            total += scope.cart[i].total;
-            scope.total = total.toFixed(2);
-          }
-        });
-      }
-    },
-    controller: function controller($scope, bearService) {
-      //goes to service passing in the item the id the quantity updates thoes values and then the response gets assigned to $scope.cart.
-      //the watch is fired off in the link since cart changed and then loops over cart,
-      //multiplies the price by quantity, uses toFixed to limit decimal two digits and assigns the total in view
-      $scope.updateItem = function (item, id, quantity) {
-        bearService.updateItem(item, id, quantity).then(function (response) {
-          $scope.cart = response.data;
-        });
-      };
-      //passes in product id into service then server and removes item from req.session.cart then the response gets assigned to $scope.cart.
-      //sthe watch is fired off in the link since cart changed and then loops over cart,
-      //multiplies the price by quantity, assigns bade number uses toFixed to limit decimal two digits and assigns the total in view
-      $scope.removeItem = function (id) {
-        bearService.removeProd(id).then(function (response) {
-          $scope.cart = response.data;
-        });
-      };
-    }
-  };
-});
-
-angular.module('bearBones').directive('ryNav', function () {
-  return {
-    restrict: "E",
-    templateUrl: './directives/nav/nav.html',
-    link: function link(scope, element, attrs) {
-      if (scope.cart) {
-        //watches my session cart
-        scope.$watch('cart', function () {
-          scope.prodCount = scope.cart.length;
-          var total = 0;
-          for (var i = 0; i < scope.cart.length; i++) {
-            scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
-            total += scope.cart[i].total;
-            scope.total = total.toFixed(2);
-          }
-        });
-      }
-    },
-    controller: function controller($scope, bearService) {
-      //mystical Luke code
-      $scope.quantityOptions = [1, 2, 3, 4, 5];
-      $scope.isNavCollapsed = true;
-      $scope.sendToCart = function (url, name, price, id) {
-        price = parseInt(price);
-        var quantity = 1;
-        bearService.sendToCart(url, name, price, id, quantity).then(function (res) {
-          $scope.cart = res.data;
-        });
-      };
-    }
-  };
-});
-
-angular.module('bearBones').directive('ryFooter', function () {
-  return {
-    restrict: "E",
-    templateUrl: './directives/footer/footer.html'
-  };
-});
-
-angular.module('bearBones').directive('selectedImg', function () {
-  return {
-    restrict: 'E',
-    templateUrl: './directives/prodImg/prodImg.html',
-    controller: function controller($scope) {
-      //allows image to be set on click
-      $scope.initImg = true;
-      $scope.setSelectedImage = function (image) {
-        if (image) {
-          $scope.initImg = false;
-          $scope.selectedImage = image;
-        }
-      };
-    }
-  };
+  //for colapsed nave bar using ui-bootsrap
+  $scope.isNavCollapsed = true;
 });
 
 angular.module('bearBones').controller('checkoutCtrl', function ($scope, bearService, cart, bearOrder, $state) {
@@ -395,6 +204,10 @@ angular.module('bearBones').controller('payMeCtrl', function ($scope, bearOrder,
   });
 });
 
+angular.module('bearBones').controller('success', function ($scope, bearOrder, $stateParams) {
+  $scope.id = $stateParams.id;
+});
+
 angular.module('bearBones').controller('productsCtrl', function ($scope, bearService, $sce, $interval, cart) {
 
   $scope.isNavCollapsed = true;
@@ -409,18 +222,6 @@ angular.module('bearBones').controller('productsCtrl', function ($scope, bearSer
   $scope.setSelectedImage = function (image) {
     $scope.selectedImage = image;
   };
-});
-
-angular.module('bearBones').controller('cartCtrl', function ($scope, bearService, cart) {
-
-  $scope.cart = cart;
-
-  //for colapsed nave bar using ui-bootsrap
-  $scope.isNavCollapsed = true;
-});
-
-angular.module('bearBones').controller('success', function ($scope, bearOrder, $stateParams) {
-  $scope.id = $stateParams.id;
 });
 
 angular.module('bearBones').controller('updateOrderCtrl', function ($scope, bearService, cart, bearOrder, $state, $stateParams) {
@@ -468,5 +269,204 @@ angular.module('bearBones').controller('updateOrderCtrl', function ($scope, bear
     } else {
       alert('Missing Shipping Info');
     }
+  };
+});
+
+angular.module('bearBones').directive('cart', function () {
+  return {
+    restrict: 'E',
+    templateUrl: './directives/cart/cart.html',
+    link: function link(scope, element, attrs) {
+      //watches my session cart
+      if (scope.cart) {
+        scope.$watch('cart', function () {
+          //sets cart badge number in the nav
+          scope.prodCount = scope.cart.length;
+          var total = 0;
+          //loops over cart, multiplies the price by quantity, uses toFixed to limit decimal two digits and assigns the total
+          for (var i = 0; i < scope.cart.length; i++) {
+            scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
+            total += scope.cart[i].total;
+            scope.total = total.toFixed(2);
+          }
+        });
+      }
+    },
+    controller: function controller($scope, bearService) {
+      //goes to service passing in the item the id the quantity updates thoes values and then the response gets assigned to $scope.cart.
+      //the watch is fired off in the link since cart changed and then loops over cart,
+      //multiplies the price by quantity, uses toFixed to limit decimal two digits and assigns the total in view
+      $scope.updateItem = function (item, id, quantity) {
+        bearService.updateItem(item, id, quantity).then(function (response) {
+          $scope.cart = response.data;
+        });
+      };
+      //passes in product id into service then server and removes item from req.session.cart then the response gets assigned to $scope.cart.
+      //sthe watch is fired off in the link since cart changed and then loops over cart,
+      //multiplies the price by quantity, assigns bade number uses toFixed to limit decimal two digits and assigns the total in view
+      $scope.removeItem = function (id) {
+        bearService.removeProd(id).then(function (response) {
+          $scope.cart = response.data;
+        });
+      };
+    }
+  };
+});
+
+angular.module('bearBones').directive('ryFooter', function () {
+  return {
+    restrict: "E",
+    templateUrl: './directives/footer/footer.html'
+  };
+});
+
+angular.module('bearBones').directive('ryNav', function () {
+  return {
+    restrict: "E",
+    templateUrl: './directives/nav/nav.html',
+    link: function link(scope, element, attrs) {
+      if (scope.cart) {
+        //watches my session cart
+        scope.$watch('cart', function () {
+          scope.prodCount = scope.cart.length;
+          var total = 0;
+          for (var i = 0; i < scope.cart.length; i++) {
+            scope.cart[i].total = scope.cart[i].quantity * scope.cart[i].price;
+            total += scope.cart[i].total;
+            scope.total = total.toFixed(2);
+          }
+        });
+      }
+    },
+    controller: function controller($scope, bearService) {
+      //mystical Luke code
+      $scope.quantityOptions = [1, 2, 3, 4, 5];
+      $scope.isNavCollapsed = true;
+      $scope.sendToCart = function (url, name, price, id) {
+        price = parseInt(price);
+        var quantity = 1;
+        bearService.sendToCart(url, name, price, id, quantity).then(function (res) {
+          $scope.cart = res.data;
+        });
+      };
+    }
+  };
+});
+
+angular.module('bearBones').directive('selectedImg', function () {
+  return {
+    restrict: 'E',
+    templateUrl: './directives/prodImg/prodImg.html',
+    controller: function controller($scope) {
+      //allows image to be set on click
+      $scope.initImg = true;
+      $scope.setSelectedImage = function (image) {
+        if (image) {
+          $scope.initImg = false;
+          $scope.selectedImage = image;
+        }
+      };
+    }
+  };
+});
+
+angular.module('bearBones').service('bearOrder', function ($http) {
+
+  //this adds an order into my server from the passing in the userCart and
+  this.postOrder = function (user, userCart) {
+    return $http({
+      method: 'POST',
+      url: '/api/order',
+      data: {
+        user: user,
+        userCart: userCart
+      }
+    });
+    // .then((res) => {
+    //   console.log(res);
+    // })
+  };
+  this.getOrder = function (id) {
+    return $http({
+      method: 'GET',
+      url: '/api/uorder/' + id,
+      data: {
+        id: id
+      }
+    });
+  };
+  this.updateOrder = function (user, userCart, id) {
+    return $http({
+      method: 'PUT',
+      url: '/api/update/order/' + id,
+      data: {
+        user: user,
+        userCart: userCart
+      }
+    });
+  };
+
+  this.payMe = function (token) {
+    return $http({
+      method: 'POST',
+      url: "/charge",
+      data: {
+        token: token
+      }
+    });
+  };
+});
+
+angular.module('bearBones').service('bearService', function ($http) {
+
+  this.getProducts = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/products'
+    }).then(function (res) {
+      return res.data;
+    });
+  };
+
+  this.sendToCart = function (url, name, price, id, quantity) {
+    return $http({
+      method: 'POST',
+      url: '/api/cart/',
+      data: {
+        url: url,
+        name: name,
+        price: price,
+        id: id,
+        quantity: quantity
+      }
+    });
+  };
+
+  this.getUserCart = function (prod) {
+    return $http({
+      method: 'GET',
+      url: '/api/cart/'
+    });
+  };
+
+  this.removeProd = function (id) {
+    return $http({
+      method: 'PUT',
+      url: '/api/cart/remove',
+      data: {
+        id: id
+      }
+    });
+  };
+  this.updateItem = function (item, id, quantity) {
+    return $http({
+      method: 'PUT',
+      url: '/api/cart',
+      data: {
+        item: item,
+        id: id,
+        quantity: quantity
+      }
+    });
   };
 });

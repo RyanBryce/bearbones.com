@@ -4,7 +4,7 @@ const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 
 gulp.task('concat', function () {
-  gulp.src(['./app/**/*.js'])
+  gulp.src(['./app/app.js', './app/views/**/*.js', './app/directives/**/*.js'])
   .pipe(concat('all.js'))
   .pipe(babel({
     presets: ['es2015']
